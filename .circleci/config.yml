@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  ruby: circleci/ruby@1.8.0
+  ruby: cimg/ruby:3.1.2
   macos: circleci/macos@2.2.0
 
 jobs:
@@ -9,7 +9,7 @@ jobs:
     macos:
       xcode: 13.3.1
     # Resource class
-    resource_class: macos.x86.medium.gen2
+    resource_class: medium
     steps:
       - checkout
       # Ruby Orb(Install fastlane)
@@ -22,7 +22,8 @@ jobs:
   ui_test:
     macos:
       xcode: 13.3.1
-    resource_class: macos.x86.medium.gen2
+    #resource_class: macos.x86.medium.gen2
+    resource_class: medium
     steps:
       - checkout
       # Preboot iOS Simulator
@@ -37,7 +38,8 @@ jobs:
   build_for_ui_test:
     macos:
       xcode: 13.3.1
-    resource_class: macos.x86.medium.gen2
+    #resource_class: macos.x86.medium.gen2
+    resource_class: medium
     steps:
       - checkout
       - ruby/install-deps
@@ -51,7 +53,8 @@ jobs:
     parallelism: 2 
     macos:
       xcode: 13.3.1
-    resource_class: macos.x86.medium.gen2
+    #resource_class: macos.x86.medium.gen2
+    resource_class: medium
     steps:
       - checkout
       - macos/preboot-simulator:
@@ -75,7 +78,8 @@ jobs:
   beta:
     macos:
       xcode: 13.3.1
-    resource_class: macos.x86.medium.gen2
+    #resource_class: macos.x86.medium.gen2
+    resource_class: medium
     steps:
       - checkout
       - ruby/install-deps
